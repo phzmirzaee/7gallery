@@ -12,7 +12,7 @@
             <h1 class="m-0 text-dark">
                 <a class="nav-link drawer" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
                 دسته بندی ها
-{{--                <a class="btn btn-primary float-left text-white py-2 px-4" href="{{ route('admin.categories.create') }}">افزودن دسته بندی جدید</a>--}}
+                <a class="btn btn-primary float-left text-white py-2 px-4" href="{{ route('admin.categories.create') }}">افزودن دسته بندی جدید</a>
             </h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -74,7 +74,7 @@
                   </div>
                   <!-- /.card -->
                   <div class="d-flex justify-content-center">
-                     {{ $categories->links() }}
+{{--                     {{ $categories->links() }}--}}
                   </div>
               </div>
           </div>
