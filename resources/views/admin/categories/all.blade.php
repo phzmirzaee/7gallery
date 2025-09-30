@@ -74,7 +74,7 @@
                   </div>
                   <!-- /.card -->
                   <div class="d-flex justify-content-center">
-{{--                     {{ $categories->links() }}--}}
+                     {{ $categories->links() }}
                   </div>
               </div>
           </div>
