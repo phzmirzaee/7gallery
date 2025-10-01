@@ -28,7 +28,7 @@
               <div class="col-md-12">
                   <div class="card card-defualt">
                       <!-- form start -->
-{{--                      <form action="{{ route('admin.categories.update', $category->id) }}" method="post">--}}
+                      <form action="{{ route('admin.categories.update', $category->id) }}" method="post">
                         @csrf
                         @method('put')
                         <input type="hidden" name="category_id" value="{{ $category->id }}">

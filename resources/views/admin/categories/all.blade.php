@@ -58,9 +58,9 @@
                                 <td>{{ $category->title }}</td>
                                 <td>{{ $category->created_at }}</td>
                                 <td>
-{{--                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-default btn-icons"><i class="fa fa-edit"></i></a>--}}
-{{--                                    <form action="{{ route('admin.categories.delete', $category->id) }}" method="POST" style="display: inline">--}}
-                                      @csrf
+                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-default btn-icons"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('admin.categories.delete', $category->id) }}" method="POST" style="display: inline">
+                                       @csrf
                                       @method('delete')
                                       <button class="btn btn-default btn-icons" type="submit"><i class="fa fa-trash"></i></button>
                                     </form>
