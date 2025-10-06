@@ -37,7 +37,12 @@ return [
             'throw' => false,
             'report' => false,
         ],
-
+        'public_storage' => [
+            'driver' => 'local',
+            'root' => public_path(''),
+            'url' => env('APP_URL').'/',
+            'visibility' => 'public',
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -45,6 +50,12 @@ return [
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
+        ],
+        'local_storage' => [
+            'driver' => 'local',
+            'root' => storage_path('app/local_storage'),
+            'visibility' => 'public',
+
         ],
 
         's3' => [
