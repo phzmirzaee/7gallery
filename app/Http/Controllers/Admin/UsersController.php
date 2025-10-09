@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Users\StoreRequest;
+use App\Http\Requests\Admin\Users\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,22 +17,46 @@ class UsersController extends Controller
     }
     public function create()
     {
-
+        return view('admin.users.add');
     }
-    public function store()
+    public function store(StoreRequest $request)
     {
-
+        $validated = $request->validated();
+        $createdUser=User::create([
+            "name"=>$validated['name'],
+            "email"=>$validated['email'],
+            "mobile"=>$validated['mobile'],
+            "role"=>$validated['role'],
+        ]);
+        if(!$createdUser){
+            return back()->with('failed','کاربر ایجاد نشد');
+        }
+        return back()->with('success','کاربر ایجاد شد');
     }
-    public function edit()
+    public function edit($user_id)
     {
-
+        $user=User::findOrFail($user_id);
+        return view('admin.users.edit',compact('user'));
     }
-    public function update()
+    public function update(UpdateRequest $request,$user_id)
     {
-
+        $validated = $request->validated();
+        $user=User::findOrFail($user_id);
+        $updatedUser=$user->update([
+            "name"=>$validated['name'],
+            "email"=>$validated['email'],
+            "mobile"=>$validated['mobile'],
+            "role"=>$validated['role'],
+        ]);
+        if(!$updatedUser){
+            return back()->with('failed','کاربر بروزرسانی نشد');
+        }
+        return back()->with('success','کاربر بروزرسانی شد');
     }
-    public function delete()
+    public function delete($user_id)
     {
-
+        $user=User::findOrFail($user_id);
+        $user->delete();
+        return back()->with("success","کاربر حذف شد");
     }
 }
