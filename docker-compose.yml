@@ -1,38 +1,37 @@
 services:
-  web:
-    build:
-      context: .
-      dockerfile: docker/php-web/Dockerfile
-    container_name: 7gallery
-    ports:
-      - "8081:80"
-    volumes:
-      - .:/var/www/html   # فقط برای dev استفاده کن
-    depends_on:
-      - db
+    web:
+        build:
+            context: .
+            dockerfile: docker/php-web/Dockerfile
+        container_name: 7gallery
+        ports:
+            - "8082:80"   # وب سایت اصلی روی پورت جدید
+        volumes:
+            - .:/var/www/html
+        depends_on:
+            - db
 
-  db:
-    image: mariadb:10.6
-    container_name: mariadb_Graphic_Shop
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: gallery7
-      MYSQL_USER: user
-      MYSQL_PASSWORD: userpassword
-    volumes:
-      - db_data:/var/lib/mysql
+    db:
+        image: mariadb:10.6
+        container_name: mariadb_Graphic_Shop
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: gallery7
+            MYSQL_USER: user
+            MYSQL_PASSWORD: userpassword
+        volumes:
+            - db_data:/var/lib/mysql
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin_Graphic_Shop
-    restart: always
-    ports:
-      - "8090:80"
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: rootpassword
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin_Graphic_Shop
+        restart: always
+        ports:
+            - "8888:80"   # phpMyAdmin روی پورت آزاد
+        environment:
+            PMA_HOST: db
+            MYSQL_ROOT_PASSWORD: rootpassword
 
 volumes:
-  db_data:
-
+    db_data:
