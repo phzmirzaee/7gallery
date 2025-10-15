@@ -199,7 +199,7 @@
             <div class="w-full">
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    جمع کل: {{ array_sum(array_column(json_decode(Cookie::get('basket'), true), 'price')) }} هزار تومان
+                    جمع کل: {{ array_sum(array_column(json_decode(Cookie::get('basket'), true) ?? [], 'price')) }} هزار تومان
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">
