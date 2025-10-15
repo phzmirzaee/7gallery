@@ -18,13 +18,12 @@ class BasketController extends Controller
         if (!$basket) {
             $basket = [];
         }
-        return ['basket' => $basket];
+        return $basket;
     }
 
     public function addToBasket(int $productId): RedirectResponse
     {
-        $data = $this->getBasket();
-        $basket = $data['basket'];
+        $basket = $this->getBasket();
 
         $product = Product::findOrFail($productId);
 
@@ -43,8 +42,7 @@ class BasketController extends Controller
 
     public function removeFromBasket(int $productId): RedirectResponse
     {
-        $data = $this->getBasket();
-        $basket = $data['basket'];
+        $basket = $this->getBasket();
         if (!isset($basket[$productId])) {
             return back()->with('error', 'محصول در سبد خرید یافت نشد.');
         }
